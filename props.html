@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Props</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  function Btn({banana}) {
+    // console.log(props); // object {banana:"~"}
+    // prop 대신 {banana}로 값을 바로 받아올 수 있음(property를 object로부터 꺼내는 것)
+    return (
+      <button 
+        style={{
+          backgroundColor: "tomato",
+          color: "white",
+          padding: "10px 20px",
+          border: 0,
+          borderRadius: 10,
+        }}
+      >
+      {banana}
+      </button>
+    )
+  }
+  function App() {
+    return (
+      <div>
+        <Btn banana="Save Changes"/>
+        <Btn banana="Continue"/>
+      </div>
+    )
+    // ReactJS 는 자동으로 모든 property(prop)들을 object 안으로 집어넣음 
+    // ex)<Btn banana="Continue"/> 는 Btn({banana:"Continue"})와 같은 효과
+    // 그리고 이 object는 컴포넌트의 첫 번째 인자로 주어짐
+  }
+
+  const root = document.getElementById("root");
+  ReactDOM.render(<App />, root);
+</script>
+</html>
