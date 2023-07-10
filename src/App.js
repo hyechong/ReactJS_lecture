@@ -13,7 +13,7 @@ function App() {
     useEffect(() => {
       console.log('hi :)');
       return () => console.log('bye :(');
-    });
+    }, []);
     return <h1>Hello!</h1>;
   }
   const onClick = () => {
